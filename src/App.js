@@ -14,7 +14,7 @@ ReactGA.pageview(window.location.pathname + window.location.search)
 const App = () => {
   const handleVibrantChange = ({ target }) => setVibrant(target.value)
 
-  const { file, setVibrant, setPalette } = useContext(SettingsContext)
+  const { file, fileName, setVibrant, setPalette } = useContext(SettingsContext)
 
   useEffect(() => {
     file &&
@@ -26,6 +26,8 @@ const App = () => {
         })
   }, [file, setPalette, setVibrant])
 
+      console.log(file)
+
   const handleSave = () => {
     ReactGA.event({
       category: 'User',
@@ -34,7 +36,7 @@ const App = () => {
 
     const el = document.getElementById('frame')
     const scale = 2
-    const output = 'download.png'
+    const output = `dribble_shot_${fileName}`
 
     domtoimage
       .toBlob(el, {

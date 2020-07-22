@@ -61,7 +61,7 @@ const Template = ({
         className='relative mb-0'
         style={{
           backgroundColor: vibrant,
-          paddingBottom: '75%',
+          paddingBottom: '100%',
         }}
       >
         {isBlurred && (
@@ -75,8 +75,26 @@ const Template = ({
             }}
           />
         )}
+        <InstagramContainer>
+          <SelectedTemplate {...selectedTemplateProps} />
+        </InstagramContainer>
+      </div>
+    </div>
+  )
+}
 
-        <SelectedTemplate {...selectedTemplateProps} />
+const InstagramContainer = ({ children }) => {
+  return (
+    <div
+      className="absolute w-full flex justify-center flex-col h-full"
+    >
+      <div
+        className="relative w-full"
+        style={{
+          paddingBottom: `80%`,
+        }}
+      >
+        {children}
       </div>
     </div>
   )

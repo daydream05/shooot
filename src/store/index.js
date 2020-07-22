@@ -42,6 +42,7 @@ export default ({ children }) => {
   const [isBlurred, setIsBlurred] = useState(false)
   const [settingsVisibility, setSettingsVisibility] = useState(false)
   const [isBlended, setIsBlended] = useState(false)
+  const [fileName, setFileName] = useState('')
 
   const settings = {
     settingsVisibility,
@@ -51,7 +52,11 @@ export default ({ children }) => {
     setTemplate,
 
     file,
-    setFile: (e) => setFile(URL.createObjectURL(e.target.files[0])),
+    fileName,
+    setFile: (e) => {
+      setFileName(e.target.files[0].name)
+      setFile(URL.createObjectURL(e.target.files[0]))
+    },
 
     spacing,
     setSpacing,
